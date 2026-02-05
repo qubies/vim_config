@@ -43,6 +43,17 @@ return {
                 "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
                 desc = "LSP Definitions/References",
             },
+            {
+                "<leader>cg",
+                function()
+                    vim.ui.input({ prompt = "Git Base: " }, function(input)
+                        if input then
+                            vim.g.gitgutter_diff_base = input
+                        end
+                    end)
+                end,
+                desc = "Git gutter set base",
+            },
         })
 
         wk.add({
