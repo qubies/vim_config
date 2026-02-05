@@ -1,3 +1,3 @@
 return {
-"https://codeberg.org/andyg/leap.nvim",
+    "https://codeberg.org/andyg/leap.nvim",
 }
