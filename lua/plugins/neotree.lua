@@ -14,8 +14,11 @@ return {
             },
             filesystem = {
                 follow_current_file = { enabled = true },
+                filtered_items = {
+                    visible = true,
+                },
             },
-            buffers = { follow_current_file = true },
+            buffers = { follow_current_file = { enabled = true } },
             sources = { "filesystem", "buffers", "git_status", "document_symbols" },
             enable_git_status = true,
             enable_diagnostics = true,
