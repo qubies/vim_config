@@ -2,7 +2,7 @@ return {
     "airblade/vim-gitgutter",
     init = function()
         -- we dont want it to be too distracting
-        vim.g.gitgutter_diff_base = "develop"
+        -- vim.g.gitgutter_diff_base = "develop"
         vim.g.gitgutter_sign_added = "|"
         vim.g.gitgutter_sign_modified = "|"
         vim.g.gitgutter_sign_removed = "|"
