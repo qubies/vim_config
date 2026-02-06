@@ -35,6 +35,7 @@ return {
         require("mini.jump").setup() -- extend f/t to multiline
         require("mini.comment").setup() -- gc to comment
         require("mini.indentscope").setup() -- indent lines
+        require("mini.git").setup() -- for git range history
         require("mini.files").setup({
             mappings = {
                 go_in = "<CR>",

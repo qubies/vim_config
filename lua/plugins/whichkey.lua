@@ -139,6 +139,27 @@ return {
             { "<leader>ai", "<cmd>CodeCompanion<cr>", desc = "Code Companion Inline", mode = { "n", "v" } },
             { "<leader>aA", "<cmd>CodeCompanionChat Add<cr>", desc = "Add to Chat", mode = "v" },
         })
+        wk.add({
+            { "<leader>G", group = "Git/vcs" },
+            {
+                "<leader>Gr",
+                "<Cmd>lua MiniGit.show_range_history()<CR>",
+                desc = "shows how certain line range evolved",
+                mode = { "n", "v" },
+            },
+            {
+                "<leader>Gd",
+                "<Cmd>lua MiniGit.show_diff_source()<CR>",
+                desc = "shows file state as it was at diff entry",
+                mode = { "n", "v" },
+            },
+            {
+                "<leader>Gc",
+                "<Cmd>lua MiniGit.show_at_cursor()<CR>",
+                desc = "shows Git related data depending on context",
+                mode = { "n", "v" },
+            },
+        })
     end,
     keys = {
         {
