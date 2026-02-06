@@ -8,9 +8,33 @@ return {
             mappings = { basic = true, option_toggle_prefix = [[\]] },
         })
 
-        require("mini.ai").setup({ n_lines = 500 })
+        local ai = require("mini.ai")
+        ai.setup({
+            n_lines = 1000,
+            custom_textobjects = {
+                -- Using the gen_spec.treesitter helper correctly
+                f = ai.gen_spec.treesitter({
+                    a = "@function.outer",
+                    i = "@function.inner",
+                }),
+                c = ai.gen_spec.treesitter({
+                    a = "@class.outer",
+                    i = "@class.inner",
+                }),
+                -- Your existing 'e' (entire buffer) object is fine
+                e = function()
+                    local n_lines = vim.api.nvim_buf_line_count(0)
+                    return {
+                        from = { line = 1, col = 1 },
+                        to = { line = n_lines, col = math.max(vim.fn.getline(n_lines):len(), 1) },
+                    }
+                end,
+            },
+        })
         require("mini.surround").setup() -- add/change/delete surroundings
+        require("mini.jump").setup() -- extend f/t to multiline
         require("mini.comment").setup() -- gc to comment
+        require("mini.indentscope").setup() -- indent lines
         require("mini.files").setup({
             mappings = {
                 go_in = "<CR>",
@@ -30,12 +54,7 @@ return {
 | Caps | A | R | S | T | G | M | N | E | I | O | ' |  Enter |
 |------'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'--------|
 |        | Z | X | C | D | V | K | H | , | . | ? |          |
-|------,-',--'--,'---'---'---'---'---'---'-,-'---',--,------|
-| ctrl |  | alt |                          | alt  |  | ctrl |
-'------'  '-----'--------------------------'------'  '------'
-                         WUt wE Do?!
-  ]],
-            footer = [[
+footer = [[
 
 BUILD
 
