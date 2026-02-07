@@ -5,6 +5,8 @@ vim.opt.swapfile = false -- swapfiles are dumb
 vim.opt.signcolumn = "auto:5" -- make signs column wider if needed
 vim.opt.tabstop = 4
 vim.opt.expandtab = true
+vim.opt.spell = true
+vim.opt.spelllang = { "en_us" }
 
 -- Disable LSP diagnostic signs in signcolumn
 vim.diagnostic.config({
